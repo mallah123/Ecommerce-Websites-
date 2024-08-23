@@ -1,0 +1,11 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container mt-5">
+    <h2>Product Buy Now</h2>
+    <!-- Add your content here -->
+    <p>This is where you can add details about the product and the buy now process.</p>
+    <a href="{% url 'buy_now' %}" class="btn btn-primary">Proceed to Payment</a>
+</div>
+{% endblock main-content %}

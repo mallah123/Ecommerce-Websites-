@@ -1,0 +1,67 @@
+{% extends 'app/base.html' %} 
+{% load static %} 
+{% block title %}Laptop{%endblock title %} 
+{% block main-content %}
+
+
+<div class="container-fluid my-5">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="list-group">
+        <a
+          href="{% url 'laptop' %}"
+          class="list-group-item list-group-item-action"
+          area-current="true"
+          >All Laptops</a
+        >
+        <a
+          href="{% url 'laptopdata' 'hp' %}"
+          class="list-group-item list-group-item-action"
+          area-current="true"
+          >hp Laptops</a
+        >
+        <a
+          href="{% url 'laptopdata' 'MacBook' %}"
+          class="list-group-item list-group-item-action"
+          area-current="true"
+          >MacBook Laptops</a
+        >
+        <a
+          href="{% url 'laptopdata' 'Below' %}"
+          class="list-group-item list-group-item-action"
+          area-current="true"
+          >Below 10000</a
+        >
+        <a
+          href="{% url 'laptopdata' 'Above' %}"
+          class="list-group-item list-group-item-action"
+          area-current="true"
+          >Above 10000</a
+        >
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="col-md-9">
+      <div class="row">
+        {% for product in laptops %}
+        <div class="col-sm-6 col-md-4 mb-4">
+          <a href="{% url 'product-detail' product.id %}" class="text-decoration-none">
+            <div class="card">
+              <img src="{{ product.product_image.url }}" alt="{{ product.title }}" class="card-img-top" />
+              <div class="card-body text-center">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <p class="card-text">
+                  <span class="fw-bold">{{ product.discounted_price }}</span>
+                  <small class="text-muted text-decoration-line-through">{{ product.selling_price }}</small>
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock main-content %}
